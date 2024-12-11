@@ -36,7 +36,7 @@
                             </a>
                         </h5>
                         <p class="card-text text-secondary mb-1">Jahr: {movie.year}</p>
-                        <p class="card-text text-secondary mb-3">Dauer: {movie.length} Minuten</p>
+                        <p class="card-text text-secondary mb-3">Dauer: {movie.length}</p>
                         <a href={`/movies/${movie._id}`} class="btn btn-outline-primary mt-auto">
                             Details ansehen
                         </a>
