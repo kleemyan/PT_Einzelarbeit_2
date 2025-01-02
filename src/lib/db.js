@@ -188,15 +188,22 @@ async function getActivity(id) {
 }
 
 // Create a new activity
-async function createActivity(activity, tripId) {
-  if (!tripId) {
-    throw new Error("Ein Trip-ID ist erforderlich, um eine Aktivität zu erstellen.");
+async function createActivity(activity) {
+  if (!activity.tripId) {
+      throw new Error('Ein Trip-ID ist erforderlich, um eine Aktivität zu erstellen.');
   }
 
-  activity.trips = [tripId]; // Verknüpfe die Aktivität mit dem Trip
+  // Überprüfen, ob der Trip existiert
+  const tripCollection = db.collection("Trips");
+  const trip = await tripCollection.findOne({ _id: new ObjectId(activity.tripId) }); // Ändere tripId zu activity.tripId
+
+  if (!trip) {
+    throw new Error(`Kein Trip mit der ID ${activity.tripId} gefunden.`);
+  }
+
+  activity.trips = [activity.tripId]; // Verknüpfe die Aktivität mit dem Trip
   try {
     const activityCollection = db.collection("Activities");
-    const tripCollection = db.collection("Trips");
 
     // Aktivität erstellen
     const result = await activityCollection.insertOne(activity);
@@ -204,7 +211,7 @@ async function createActivity(activity, tripId) {
 
     // Aktivität dem Trip hinzufügen
     await tripCollection.updateOne(
-      { _id: new ObjectId(tripId) },
+      { _id: new ObjectId(activity.tripId) }, // Ändere tripId zu activity.tripId
       { $push: { activities: activityId } }
     );
 
@@ -215,24 +222,25 @@ async function createActivity(activity, tripId) {
   return null;
 }
 
+
 // Update an activity
 async function updateActivity(activity) {
   try {
     let id = activity._id;
-    delete activity._id; // _id entfernen, da es nicht aktualisiert werden kann
+    delete activity._id;
     const collection = db.collection("Activities");
     const query = { _id: new ObjectId(id) };
     const result = await collection.updateOne(query, { $set: activity });
 
     if (result.matchedCount === 0) {
       console.log("No activity with id " + id);
-    } else {
-      console.log("Activity with id " + id + " has been updated.");
-      return id;
     }
+
+    return id;
   } catch (error) {
     console.log(error.message);
   }
+
   return null;
 }
 
@@ -265,6 +273,6 @@ export default {
   getActivity,
   createActivity,
   updateActivity,
-  deleteActivity
+  deleteActivity,
 };
 

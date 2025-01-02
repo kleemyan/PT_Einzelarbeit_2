@@ -1,0 +1,92 @@
+body, main {
+    background-color: #6eadf9; /* Helles Grau für ein modernes, sauberes Design */
+    color: #333333; /* Dunkles Grau für Text */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+main {
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #0066cc; /* Blau für Links */
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #004d99; /* Dunkleres Blau beim Hover */
+}
+
+.navbar-brand {
+    font-size: 1.75rem;
+    color: #0066cc; /* Passend zur Navigation */
+    font-weight: bold;
+}
+
+.card {
+    background-color: #fafbb5;
+    border: 1px solid #dddddd; /* Dezentes Grau für die Umrandung */
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Weichere Schatten */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 1rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stärkerer Schatten beim Hover */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333333;
+}
+
+.card-text {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #666666; /* Leicht gedämpfte Textfarbe */
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.btn-primary {
+    background-color: #28a745; /* Modernes Grün */
+    border-color: #28a745;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #218838; /* Dunkleres Grün beim Hover */
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #007bff; /* Blau für sekundäre Buttons */
+    border-color: #007bff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #0056b3; /* Dunkleres Blau beim Hover */
+    transform: scale(1.05);
+}
+

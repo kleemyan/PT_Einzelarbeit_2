@@ -1,51 +1,92 @@
-import db from "$lib/db.js";
-import { error } from "@sveltejs/kit";
+import db from '$lib/db.js';
 
 export const actions = {
-  default: async ({ request }) => {
-    try {
-      const formData = await request.formData();
-      
-      // Hole die Trip-Daten aus dem Formular
-      const title = formData.get("title");
-      const destination = formData.get("destination");
-      const start_date = formData.get("start_date");
-      const end_date = formData.get("end_date");
+    create: async ({ request }) => {
+        try {
+            // Formulardaten abrufen
+            const formData = await request.formData();
+            console.log("Form data received:", [...formData.entries()]);
 
-      // Validierung der Trip-Daten
-      if (!title || !destination || !start_date || !end_date) {
-        throw error(400, "Alle Felder für den Trip sind erforderlich!");
-      }
+            // Daten aus dem Formular extrahieren
+            const trip = {
+                title: formData.get('title'), // Titel des Trips
+                destination: formData.get('destination'), // Reiseziel
+                start_date: formData.get('start_date'), // Startdatum
+                end_date: formData.get('end_date'), // Enddatum
+            };
+            console.log("Trip data:", trip);
 
-      // Erstelle den Trip
-      const tripId = await db.createTrip({
-        title,
-        destination,
-        start_date,
-        end_date,
-        activities: [] // Platzhalter für Aktivitäten
-      });
+            // Trip in der Datenbank erstellen
+            const tripId = await db.createTrip(trip);
+            console.log("Trip created with ID:", tripId);
 
-      // Verknüpfe Aktivitäten, falls welche angegeben wurden
-      const activityNames = formData.getAll("activity_name");
-      const activityLocations = formData.getAll("activity_location");
-      const activityDescriptions = formData.getAll("activity_description");
+            // Sicherstellen, dass tripId verfügbar ist
+            if (!tripId) {
+                console.error("Trip ID is undefined. Cannot create activities.");
+                return {
+                    success: false,
+                    error: 'Trip could not be created.',
+                };
+            }
 
-      for (let i = 0; i < activityNames.length; i++) {
-        const activity = {
-          name: activityNames[i],
-          location: activityLocations[i],
-          description: activityDescriptions[i],
-        };
-        await db.createActivity(activity, tripId); // Verknüpft die Aktivität mit dem Trip
-      }
+            // Aktivitäten extrahieren
+            const activities = [];
+            const entries = [...formData.entries()];
+            console.log("FormData entries:", entries);
 
-      return { success: true, tripId };
-    } catch (err) {
-      console.error("Fehler beim Erstellen eines Trips oder einer Aktivität:", err.message);
-      throw error(500, "Interner Serverfehler");
-    }
-  }
+            entries.forEach(([key, value]) => {
+                const match = key.match(/^activities\[(\d+)\]\[(name|location|description)\]$/);
+                if (match) {
+                    const [, index, field] = match;
+                    if (!activities[index]) activities[index] = {}; // Initialisiere Aktivität
+                    activities[index][field] = value; // Füge Daten hinzu
+                }
+            });
+            console.log("Extracted activities:", activities);
+
+            // Aktivitäten dem Trip hinzufügen
+            for (const activity of activities) {
+                if (activity.name && activity.location && activity.description) {
+                    const activityWithTripId = { ...activity, tripId }; // tripId explizit hinzufügen
+                    console.log("Adding activity with tripId:", activityWithTripId);
+
+                    const activityId = await db.createActivity(activityWithTripId);
+                    console.log("Activity added with ID:", activityId);
+
+                    if (!activityId) {
+                        return {
+                            success: false,
+                            error: `Activity "${activity.name}" could not be created.`,
+                        };
+                    }
+                } else {
+                    console.warn("Incomplete activity data:", activity);
+                }
+            }
+
+            // Erfolgsmeldung zurückgeben
+            return {
+                success: true,
+                tripId,
+            };
+
+        } catch (err) {
+            console.error("Error during trip creation:", err);
+            return {
+                success: false,
+                error: 'An unexpected error occurred. Please try again.',
+            };
+        }
+    },
 };
+
+
+
+
+
+
+
+
+
 
 

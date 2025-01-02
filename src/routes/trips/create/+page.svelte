@@ -1,51 +1,153 @@
 <script>
-  let activities = []; // Liste der hinzugefügten Aktivitäten
+  import { writable } from 'svelte/store';
 
-  // Füge eine neue Aktivität hinzu
+  let { form } = $props();
+
+  // Daten für den Trip
+  let trip = {
+    title: "",
+    destination: "",
+    start_date: "",
+    end_date: "",
+  };
+
+  // Liste der Aktivitäten als writable-Store
+  let activities = writable([]);
+
+  // Neue Aktivität hinzufügen
   function addActivity() {
-    activities = [...activities, { name: "", location: "", description: "" }];
+    activities.update((current) => [...current, { name: "", location: "", description: "" }]);
   }
 
-  // Entferne eine Aktivität
+  // Aktivität löschen
   function removeActivity(index) {
-    activities = activities.filter((_, i) => i !== index);
+    activities.update((current) => current.filter((_, i) => i !== index));
   }
 </script>
 
-<h1>Neuen Trip erstellen</h1>
-<form method="POST">
-  <!-- Trip-Daten -->
-  <label for="title">Titel:</label>
-  <input id="title" name="title" type="text" required />
+<div class="container mt-4">
+  <a href="/trips" class="btn btn-link text-light mb-4">Zurück</a>
+  <h1 class="mb-4">Trip hinzufügen</h1>
 
-  <label for="destination">Destination:</label>
-  <input id="destination" name="destination" type="text" required />
+  <form method="POST" action="?/create" class="needs-validation">
+    <!-- Trip Details -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Titel</label>
+      <input
+        id="title"
+        name="title"
+        bind:value={trip.title}
+        class="form-control"
+        type="text"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="destination" class="form-label">Destination</label>
+      <input
+        id="destination"
+        name="destination"
+        bind:value={trip.destination}
+        class="form-control"
+        type="text"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="start_date" class="form-label">Startdatum</label>
+      <input
+        id="start_date"
+        name="start_date"
+        bind:value={trip.start_date}
+        class="form-control"
+        type="date"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="end_date" class="form-label">Enddatum</label>
+      <input
+        id="end_date"
+        name="end_date"
+        bind:value={trip.end_date}
+        class="form-control"
+        type="date"
+        required
+      />
+    </div>
 
-  <label for="start_date">Startdatum:</label>
-  <input id="start_date" name="start_date" type="date" required />
+    <!-- Activities Details -->
+    <h2 class="mt-4">Aktivitäten hinzufügen</h2>
 
-  <label for="end_date">Enddatum:</label>
-  <input id="end_date" name="end_date" type="date" required />
+    {#each $activities as activity, index}
+      <div class="activity-group mb-4">
+        <div class="mb-3">
+          <label for={`activity_name_${index}`} class="form-label">Name</label>
+          <input
+            id={`activity_name_${index}`}
+            name={`activities[${index}][name]`}
+            bind:value={activity.name}
+            class="form-control"
+            type="text"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for={`activity_location_${index}`} class="form-label">Ort</label>
+          <input
+            id={`activity_location_${index}`}
+            name={`activities[${index}][location]`}
+            bind:value={activity.location}
+            class="form-control"
+            type="text"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for={`activity_description_${index}`} class="form-label">Beschreibung</label>
+          <textarea
+            id={`activity_description_${index}`}
+            name={`activities[${index}][description]`}
+            bind:value={activity.description}
+            class="form-control"
+            required
+          ></textarea>
+        </div>
+        <button type="button" class="btn btn-danger" onclick={() => removeActivity(index)}>
+          Aktivität löschen
+        </button>
+      </div>
+    {/each}
 
-  <h2>Aktivitäten hinzufügen</h2>
-  {#each activities as activity, index}
-    <fieldset>
-      <legend>Aktivität {index + 1}</legend>
-      <label for={`activity_name_${index}`}>Name:</label>
-      <input id={`activity_name_${index}`} name="activity_name" bind:value={activity.name} required />
+    <!-- Button Container -->
+    <div class="button-container">
+      <button type="button" class="btn btn-secondary" onclick={addActivity}>
+        Aktivität hinzufügen
+      </button>
+      <button type="submit" class="btn btn-primary">Trip hinzufügen</button>
+    </div>
+  </form>
 
-      <label for={`activity_location_${index}`}>Ort:</label>
-      <input id={`activity_location_${index}`} name="activity_location" bind:value={activity.location} required />
+  {#if form?.success}
+    <p class="mt-3 text-success">Trip and Activities created successfully!</p>
+  {/if}
 
-      <label for={`activity_description_${index}`}>Beschreibung:</label>
-      <textarea id={`activity_description_${index}`} name="activity_description" bind:value={activity.description}></textarea>
+  {#if form?.error}
+    <p class="mt-3 text-danger">{form.error}</p>
+  {/if}
+</div>
 
-      <button type="button" on:click={() => removeActivity(index)}>Entfernen</button>
-    </fieldset>
-  {/each}
+<style>
+  .button-container {
+    display: flex;
+    justify-content: flex-end; /* Buttons rechtsbündig */
+    gap: 1rem; /* Abstand zwischen den Buttons */
+    margin-top: 1.5rem; /* Abstand nach oben */
+  }
 
-  <button type="button" on:click={addActivity}>Aktivität hinzufügen</button>
-  <button type="submit">Trip erstellen</button>
-</form>
-
-  
+  .btn-secondary,
+  .btn-primary {
+    text-transform: none; /* Verhindert Großbuchstaben */
+    margin: 0; /* Entfernt unnötige Standardabstände */
+  }
+</style>
