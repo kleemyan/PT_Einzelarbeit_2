@@ -1,92 +1,91 @@
 body, main {
-    background-color: #6eadf9; /* Helles Grau für ein modernes, sauberes Design */
-    color: #333333; /* Dunkles Grau für Text */
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: 0;
+    background-color: #6eadf9 !important; /* Helles Grau für ein modernes, sauberes Design */
+    color: #333333 !important; /* Dunkles Grau für Text */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    margin: 0 !important;
 }
 
 main {
-    min-height: 100vh;
-    padding: 2rem;
+    min-height: 100vh !important;
+    padding: 2rem !important;
 }
 
 .nav-link {
-    text-decoration: none;
-    font-size: 1rem;
-    color: #0066cc; /* Blau für Links */
-    transition: color 0.3s ease;
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    color: #0066cc !important; /* Blau für Links */
+    transition: color 0.3s ease !important;
 }
 
 .nav-link:hover {
-    color: #004d99; /* Dunkleres Blau beim Hover */
+    color: #004d99 !important; /* Dunkleres Blau beim Hover */
 }
 
 .navbar-brand {
-    font-size: 1.75rem;
-    color: #0066cc; /* Passend zur Navigation */
-    font-weight: bold;
+    font-size: 1.75rem !important;
+    color: #0066cc !important; /* Passend zur Navigation */
+    font-weight: bold !important;
 }
 
 .card {
-    background-color: #fafbb5;
-    border: 1px solid #dddddd; /* Dezentes Grau für die Umrandung */
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Weichere Schatten */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    padding: 1rem;
+    background-color: #fafbb5 !important;
+    border: 1px solid #dddddd !important; /* Dezentes Grau für die Umrandung */
+    border-radius: 0.5rem !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important; /* Weichere Schatten */
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    padding: 1rem !important;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stärkerer Schatten beim Hover */
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important; /* Stärkerer Schatten beim Hover */
 }
 
 .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #333333;
+    font-size: 1.25rem !important;
+    font-weight: bold !important;
+    color: #333333 !important;
 }
 
 .card-text {
-    font-size: 1rem;
-    font-weight: normal;
-    color: #666666; /* Leicht gedämpfte Textfarbe */
+    font-size: 1rem !important;
+    font-weight: normal !important;
+    color: #666666 !important; /* Leicht gedämpfte Textfarbe */
 }
 
 .card-img-top {
-    height: 250px;
-    object-fit: cover;
-    border-radius: 0.5rem 0.5rem 0 0;
+    height: 250px !important;
+    object-fit: cover !important;
+    border-radius: 0.5rem 0.5rem 0 0 !important;
 }
 
 .btn-primary {
-    background-color: #28a745; /* Modernes Grün */
-    border-color: #28a745;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: #28a745 !important; /* Modernes Grün */
+    border-color: #28a745 !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.25rem !important;
+    text-transform: uppercase !important;
+    transition: background-color 0.3s ease, transform 0.3s ease !important;
 }
 
 .btn-primary:hover {
-    background-color: #218838; /* Dunkleres Grün beim Hover */
-    transform: scale(1.05);
+    background-color: #218838 !important; /* Dunkleres Grün beim Hover */
+    transform: scale(1.05) !important;
 }
 
 .btn-secondary {
-    background-color: #007bff; /* Blau für sekundäre Buttons */
-    border-color: #007bff;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: #007bff !important; /* Blau für sekundäre Buttons */
+    border-color: #007bff !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.25rem !important;
+    transition: background-color 0.3s ease, transform 0.3s ease !important;
 }
 
 .btn-secondary:hover {
-    background-color: #0056b3; /* Dunkleres Blau beim Hover */
-    transform: scale(1.05);
+    background-color: #0056b3 !important; /* Dunkleres Blau beim Hover */
+    transform: scale(1.05) !important;
 }
-

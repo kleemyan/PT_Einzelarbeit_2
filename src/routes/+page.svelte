@@ -15,7 +15,7 @@
       </div>
       <!-- Bild unterhalb der Buttons -->
       <div class="mt-4">
-        <img src="/images/Plane.png" alt="Plane" class="img-fluid" />
+        <img src="/images/plane.png" alt="plane" class="img-fluid" />
       </div>
     </div>
   </div>
