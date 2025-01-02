@@ -1,5 +1,5 @@
 <script>
-  // Hier können Sie weitere Logik hinzufügen
+ import "./styles.css";
 </script>
 
 <div class="container mt-2">
@@ -21,53 +21,5 @@
   </div>
 </div>
 
-<style>
-  :global(body) {
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
-  }
 
-  .cta {
-    padding: 10px 20px;
-    font-size: 1.25rem;
-    font-weight: bold;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-
-  .btn-primary.cta {
-    background-color: #5757f1;
-    color: #fff;
-  }
-
-  .btn-primary.cta:hover {
-    background-color: #511edd;
-  }
-
-  .btn-secondary.cta {
-    background-color: #32bf40;
-    color: #fff;
-  }
-
-  .btn-secondary.cta:hover {
-    background-color: #2c9207;
-  }
-
-  .img-fluid {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  .vh-100 {
-    height: 100vh;
-  }
-</style>
 
