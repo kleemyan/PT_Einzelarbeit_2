@@ -1,6 +1,9 @@
-body, main {
-    background-color: #6eadf9 !important; /* Helles Grau für ein modernes, sauberes Design */
-    color: #333333 !important; /* Dunkles Grau für Text */
+body,
+main {
+    background-color: #6eadf9 !important;
+    /* Helles Grau für ein modernes, sauberes Design */
+    color: #333333 !important;
+    /* Dunkles Grau für Text */
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     margin: 0 !important;
 }
@@ -13,32 +16,38 @@ main {
 .nav-link {
     text-decoration: none !important;
     font-size: 1rem !important;
-    color: #0066cc !important; /* Blau für Links */
+    color: #0066cc !important;
+    /* Blau für Links */
     transition: color 0.3s ease !important;
 }
 
 .nav-link:hover {
-    color: #004d99 !important; /* Dunkleres Blau beim Hover */
+    color: #004d99 !important;
+    /* Dunkleres Blau beim Hover */
 }
 
 .navbar-brand {
     font-size: 1.75rem !important;
-    color: #0066cc !important; /* Passend zur Navigation */
+    color: #0066cc !important;
+    /* Passend zur Navigation */
     font-weight: bold !important;
 }
 
 .card {
     background-color: #fafbb5 !important;
-    border: 1px solid #dddddd !important; /* Dezentes Grau für die Umrandung */
+    border: 1px solid #dddddd !important;
+    /* Dezentes Grau für die Umrandung */
     border-radius: 0.5rem !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important; /* Weichere Schatten */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    /* Weichere Schatten */
     transition: transform 0.2s ease, box-shadow 0.2s ease !important;
     padding: 1rem !important;
 }
 
 .card:hover {
     transform: translateY(-5px) !important;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important; /* Stärkerer Schatten beim Hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+    /* Stärkerer Schatten beim Hover */
 }
 
 .card-title {
@@ -50,7 +59,8 @@ main {
 .card-text {
     font-size: 1rem !important;
     font-weight: normal !important;
-    color: #666666 !important; /* Leicht gedämpfte Textfarbe */
+    color: #666666 !important;
+    /* Leicht gedämpfte Textfarbe */
 }
 
 .card-img-top {
@@ -60,7 +70,8 @@ main {
 }
 
 .btn-primary {
-    background-color: #28a745 !important; /* Modernes Grün */
+    background-color: #28a745 !important;
+    /* Modernes Grün */
     border-color: #28a745 !important;
     font-size: 1rem !important;
     font-weight: bold !important;
@@ -71,12 +82,14 @@ main {
 }
 
 .btn-primary:hover {
-    background-color: #218838 !important; /* Dunkleres Grün beim Hover */
+    background-color: #218838 !important;
+    /* Dunkleres Grün beim Hover */
     transform: scale(1.05) !important;
 }
 
 .btn-secondary {
-    background-color: #007bff !important; /* Blau für sekundäre Buttons */
+    background-color: #007bff !important;
+    /* Blau für sekundäre Buttons */
     border-color: #007bff !important;
     font-size: 1rem !important;
     font-weight: bold !important;
@@ -86,6 +99,140 @@ main {
 }
 
 .btn-secondary:hover {
-    background-color: #0056b3 !important; /* Dunkleres Blau beim Hover */
+    background-color: #0056b3 !important;
+    /* Dunkleres Blau beim Hover */
     transform: scale(1.05) !important;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 16px;
+    text-align: center;
+}
+
+.card-title {
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.card-text {
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.details-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #0070f3;
+    text-decoration: underline;
+}
+
+.details-link:hover {
+    text-decoration: none;
+}
+
+/* Abstand von der Navbar */
+.title-container {
+    padding-top: 4rem;
+    /* Abstand von der Navbar */
+    margin-bottom: 2rem;
+    /* Abstand nach unten */
+}
+
+/* Titel Styling */
+.page-title {
+    font-size: 2.5rem;
+    /* Große Schriftgröße */
+    font-weight: bold;
+    margin: 0;
+    /* Kein zusätzlicher Abstand */
+    color: #333;
+    /* Textfarbe */
+}
+
+/* Globale Anpassung */
+:global(body) {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Abstand zu Aktivitäten */
+.row {
+    margin-top: 2rem;
+    /* Abstand zu den Aktivitäten */
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    /* Buttons rechtsbündig */
+    gap: 1rem;
+    /* Abstand zwischen den Buttons */
+    margin-top: 1.5rem;
+    /* Abstand nach oben */
+}
+
+.btn-secondary,
+.btn-primary {
+    text-transform: none !important;
+    /* Verhindert Großbuchstaben */
+    margin: 0 !important;
+    /* Entfernt unnötige Standardabstände */
+}
+
+
+/* Abstand von der Navbar */
+.title-container {
+    padding-top: 4rem;
+    /* Abstand von der Navbar */
+    margin-bottom: 2rem;
+    /* Abstand nach unten */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Titel links, Button rechts */
+}
+
+/* Titel Styling */
+.page-title {
+    font-size: 2.5rem;
+    /* Große Schriftgröße */
+    font-weight: bold;
+    margin: 0;
+    /* Kein zusätzlicher Abstand */
+    color: #333;
+    /* Textfarbe */
+}
+
+/* Add Trip Button Styling */
+.add-trip {
+    margin-left: auto;
+    /* Schiebt den Button nach rechts */
+}
+
+.btn-primary {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Globale Anpassung */
+:global(body) {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Abstand zu Trips */
+.row {
+    margin-top: 2rem;
+    /* Abstand zu den Buttons */
 }

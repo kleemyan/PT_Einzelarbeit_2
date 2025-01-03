@@ -13,41 +13,5 @@
   </div>
 </div>
 
-<style>
-  .card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .card-body {
-    padding: 16px;
-    text-align: center;
-  }
-
-  .card-title {
-    margin-bottom: 8px;
-    font-size: 1.25rem;
-    color: #333;
-  }
-
-  .card-text {
-    margin-bottom: 4px;
-    font-size: 0.9rem;
-    color: #555;
-  }
-
-  .details-link {
-    display: inline-block;
-    margin-top: 8px;
-    color: #0070f3;
-    text-decoration: underline;
-  }
-
-  .details-link:hover {
-    text-decoration: none;
-  }
-</style>
 
   

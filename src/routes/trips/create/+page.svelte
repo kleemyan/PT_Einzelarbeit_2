@@ -129,25 +129,10 @@
   </form>
 
   {#if form?.success}
-    <p class="mt-3 text-success">Trip and Activities created successfully!</p>
+    <p class="mt-3 text-success">Trip erfolgreich hinzugefügt!</p>
   {/if}
 
   {#if form?.error}
     <p class="mt-3 text-danger">{form.error}</p>
   {/if}
 </div>
-
-<style>
-  .button-container {
-    display: flex;
-    justify-content: flex-end; /* Buttons rechtsbündig */
-    gap: 1rem; /* Abstand zwischen den Buttons */
-    margin-top: 1.5rem; /* Abstand nach oben */
-  }
-
-  .btn-secondary,
-  .btn-primary {
-    text-transform: none; /* Verhindert Großbuchstaben */
-    margin: 0; /* Entfernt unnötige Standardabstände */
-  }
-</style>

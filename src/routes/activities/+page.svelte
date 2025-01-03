@@ -18,33 +18,4 @@
     <p>Keine Aktivitäten gefunden.</p>
   {/if}
 </div>
-
-<style>
-  /* Abstand von der Navbar */
-  .title-container {
-    padding-top: 4rem; /* Abstand von der Navbar */
-    margin-bottom: 2rem; /* Abstand nach unten */
-  }
-
-  /* Titel Styling */
-  .page-title {
-    font-size: 2.5rem; /* Große Schriftgröße */
-    font-weight: bold;
-    margin: 0; /* Kein zusätzlicher Abstand */
-    color: #333; /* Textfarbe */
-  }
-
-  /* Globale Anpassung */
-  :global(body) {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  /* Abstand zu Aktivitäten */
-  .row {
-    margin-top: 2rem; /* Abstand zu den Aktivitäten */
-  }
-</style>
-
   
